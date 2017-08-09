@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    header
+        nav
+            ul
+                a(href='/gabs')
+                    li Gabble
+                if user
+                    a(href='/gabs/create')
+                        li Create a new gab
+                    a(href='/users/profile')
+                        li #{user}'s profile
+                    a(href='/users/signout')
+                        li Log out
+                else
+                    a(href='/users')
+                        li Log in
+                    a(href='/users/signup')
+                        li Sign up
+    h1= title
+    if !user
+        div.formWrapper
+            section.form
+                p= msg
+                form(method='post' action='/users/')
+                    label(for='username') Username
+                    input(type='text', name='username', id='username')
+                    label(for='password') Password
+                    input(type='password', name='password', id='password')
+                    input.button(type='submit')
+                    a.signup(href='/users/signup') Sign-up
+    else
+        div.welcome
+            p Welcome,
+                span.userName  #{user}
