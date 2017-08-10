@@ -4,27 +4,27 @@ block content
     // Navigation Section
     nav.light-blue.lighten-5.z-depth-2.black-text(role='navigation')
         div.nav-wrapper.container
-            ul.center.hide-on-med-and-down.black-text
+            ul.center.hide-on-med-and-down
                 li
                     a.black-text(href='/') Home
                 li
                     a.black-text(href='/lfw') Looking for work
                 li
-                    a.black-text(href='/employed') Employed
+                    a.black-text(href='/#') Employed
             ul.side-nav#nav-mobile(style='transform: translateX(-100%);')
                 li
                     a.black-text(href='/') Home
                 li
                     a.black-text(href='/lfw') Looking for work
                 li
-                    a.black-text(href='/employed') Employed
+                    a.black-text(href='/#') Employed
             a.button-collapse(href='#', data-activates='nav-mobile')
                 i.material-icons menu
     // User section
     div.container
-        h2.header.center All employees
+        h2.header.center Currently employed
         div.row.hide-on-med-and-down
-            each val in result
+            each val in users
                 div.col.l4
                     a(href='/single/' + val.id)
                         h4.header= val.name
@@ -33,14 +33,11 @@ block content
                             img(src= val.avatar)
                         div.card-stacked
                             div.card-content
-                                if val.job
-                                    span #{val.job}, #{val.company}
-                                else
-                                    span.orange-text.lighten-1 Available for hire
+                                span #{val.job}, #{val.company}
                             div.card-action
                                 a(href='#')= val.email
         div.row.hide-on-large-only
-            each val in result
+            each val in users
                 div.col.s12
                     a(href='/single/' + val.id)
                         h4.header= val.name
@@ -49,9 +46,6 @@ block content
                                 img(src= val.avatar)
                             div.card-stacked
                                 div.card-content
-                                    if val.job
-                                        span #{val.job}, #{val.company}
-                                    else
-                                        span Available for hire
+                                    span #{val.job}, #{val.company}
                                 div.card-action
                                     a(href='#')= val.email

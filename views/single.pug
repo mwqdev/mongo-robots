@@ -1,0 +1,62 @@
+extends layout
+
+block content
+    // Navigation Section
+    nav.light-blue.lighten-5.z-depth-2(role='navigation')
+        div.nav-wrapper.container
+            ul.center.hide-on-med-and-down
+                li
+                    a.black-text(href='/') Home
+                li
+                    a.black-text(href='/lfw') Looking for work
+                li
+                    a.black-text(href='/employed') Employed
+            ul.side-nav#nav-mobile(style='transform: translateX(-100%);')
+                li
+                    a.black-text(href='/') Home
+                li
+                    a.black-text(href='/lfw') Looking for work
+                li
+                    a.black-text(href='/employed') Employed
+            a.button-collapse(href='#', data-activates='nav-mobile')
+                i.material-icons menu
+    // User section
+    div.container
+        h2.header.center= name
+        div.row
+            div.col.l8.offset-l2.m12
+                div.card.horizontal.light-blue.lighten-5.larger-text
+                    div.card-image
+                        img(src= avatar)
+                    div.card-stacked
+                        div.card-content
+                            div.row
+                                div.col.l6
+                                    if job
+                                        if !address.city
+                                            span.left #{address.country} | #{job}, #{company}
+                                        else
+                                            span.left #{address.city}, #{address.country} | #{job}, #{company}
+                                    else
+                                        if !address.city
+                                            span.left #{address.country} |&nbsp
+                                                span.orange-text.lighten-1 Available for hire
+                                        else
+                                            span.left #{address.city}, #{address.country} |&nbsp
+                                                span.orange-text.lighten-1 Available for hire
+                                div.col.l6
+                                    span.right #{email}
+                                    span.right #{phone}
+                        div.card-action
+                            div.row
+                                div.col
+                                    span.left Education
+                                    br
+                                    br
+                                    span.left Skills
+                                div.col.right
+                                    span.right= university
+                                    br
+                                    br
+                                    each val in skills
+                                        span.right= val

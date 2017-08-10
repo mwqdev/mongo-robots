@@ -1,5 +1,5 @@
 {
-  "name": "mongo-robots",
+  "name": "mongo_robots",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "mongodb": "^2.2.31",
     "pug": "^2.0.0-rc.2"
   }
 }
