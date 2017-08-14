@@ -8,14 +8,15 @@ const url = 'mongodb://localhost:27017/userDatabase';
 
 router.get('/', (req, res) => {
 
-    mongo.connect(url, (err, db) => {
+    mongo.connect(url, async (err, db) => {
 
         assert.equal(null, err);
-        let collection = db.collection('robots');
+        let collection = await db.collection('robots');
 
         collection.find({}).toArray((err, result) => {
             assert.equal(null, err);
             let response = result[0].users;
+            console.log(response);
             res.render('index', {result: response});
         });
         db.close();
@@ -46,10 +47,10 @@ router.get('/single/:userId', (req, res) => {
 
 router.get('/lfw', (req, res) => {
 
-    mongo.connect(url, (err, db) => {
+    mongo.connect(url, async (err, db) => {
 
         assert.equal(null, err);
-        let collection = db.collection('robots');
+        let collection = await db.collection('robots');
 
         collection.find({}).toArray((err, result) => {
             assert.equal(null, err);
@@ -67,9 +68,9 @@ router.get('/lfw', (req, res) => {
 
 router.get('/employed', (req, res) => {
 
-    mongo.connect(url, (err, db) => {
+    mongo.connect(url, async (err, db) => {
         assert.equal(null, err);
-        let collection = db.collection('robots');
+        let collection = await db.collection('robots');
 
         collection.find({}).toArray((err, result) => {
             assert.equal(null, err);
